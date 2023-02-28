@@ -10,9 +10,11 @@ It has a PCB with a microcontroller, a conector for a 10K NTC temperature sensor
 
 Specs:
 * Microcontroller: NXP MCF51QM128
-* Relay: Omron G4A-1A-E 12VDC 20A 250VAC (overkill, the heating element is rated only 2 kW, which should draw around 9A, purely resistive)
+* Relay: Omron G4A-1A-E 12VDC 20A 250VAC (overkill, so I guess it'll last forever. Not cheap either.)
 * LCD: ER-TFT018-2 (1.8" 160x128 pixels)
-* Temperature sensor: 10K NTC connected via 2-pin JST XH connector
+* Temperature sensor: 10K NTC connected via 2-pin JST XH connector, measures 1530 Ω at 75°C
+* Heating element: nominal 2 kW resistive element, measures around 26.5 Ω which is almost exactly V²/P = 230²/2000
+  * fun fact: the voltage in my house is usually between 235 V and 240 V, so the actual power is usually between 2.1 and 2.2 kW.
 
 It also has a 4-pin header for a wifi module, but it's not really for sale. I asked the vendor where I got my boiler, but they told me they can't order this part specifically.
 

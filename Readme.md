@@ -8,13 +8,39 @@ I've been using ths boiler completely unconnected, offline, and it has been perf
 
 It has a PCB with a microcontroller, a conector for a 10K NTC temperature sensor, a big relay to switch the 2 kW heating element), and an isloated power supply. On the front it has a color LCD and 4 buttons.
 
-Specs:
+## Specs:
 * Microcontroller: NXP MCF51QM128
 * Relay: Omron G4A-1A-E 12VDC 20A 250VAC (overkill, so I guess it'll last forever. Not cheap either.)
 * LCD: ER-TFT018-2 (1.8" 160x128 pixels)
 * Temperature sensor: 10K NTC connected via 2-pin JST XH connector, measures 1530 Ω at 75°C
 * Heating element: nominal 2 kW resistive element, measures around 26.5 Ω which is almost exactly V²/P = 230²/2000
-  * fun fact: the voltage in my house is usually between 235 V and 240 V, so the actual power is usually between 2.1 and 2.2 kW.
+  * fun fact: the mains voltage in my house is usually between 235 V and 240 V, so the actual power is usually between 2.1 and 2.2 kW.
+* STWD100 watchdog IC
+* PE301522 230V AC -> 7.5V AC isolated transformer, DB106S bridge rectifier, NCP3170 switching converter, 3.3V
+* 0.33F 5.5V supercap (charged up to 3.3V) probably for the RTC, but I have no clue how this is connected to the microcontroller
+
+## Pinouts:
+### Wifi module header
+1. GND
+2. 3.3 V
+3. #44: ADC0_SE22 or more likely UART0_TX
+4. #43: ADC0_SE21 or more likely UART0_RX
+
+### [BDM](https://en.wikipedia.org/wiki/Background_debug_mode_interface) header
+1. (square) Watchdog Enable (on the STWD100)
+2. GND
+3. BKGD/MS
+4. RESET_b
+
+### Buttons (top to bottom)
+* #61: PTF7 **⏻** ⮌
+* #60: PTF6 **⮝** t°
+* #59: PTF5 **⮟** ☰
+* #58: PTF4 **⮨** i
+
+### Other pins:
+* #9, PTA2: Relay primary coil
+
 
 It also has a 4-pin header for a wifi module, but it's not really for sale. I asked the vendor where I got my boiler, but they told me they can't order this part specifically.
 

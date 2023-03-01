@@ -46,11 +46,29 @@ It also has a 4-pin header for a wifi module, but it's not really for sale. I as
 
 Of those 4 pins, 2 of them are power (3.3V and GND), the other 4 pins are probably TTL serial, but no actual communication happens. The current hypothesis is that the wifi module initialises any communication. But I don't have one, so I can't see that in action.
 
-So I decided to replace the entire PCB with one of my own. Preferably with the exact same dimensions, and the LCD and buttons in the exact same spots. And some kind of connectivity, probably MQTT over wifi. The most likely microcontroller would be an esp32.
+## The options
 
-Obviously I'll have to think about safety. There are a bunch of safely features outside of the PCB: a thermal cutout (96°C+0/-6) on the power inlet, a check valve and pressure relief valve on the water inlet.
+There are three options:
 
+### Just the module
+
+Either I figure out the protocol in some other way, possibly trough dumping the firmware, and I create a replacement for the wifi module.
+
+If dumping the firmware is possible over the debug port, then this may be the easiest option.
+
+### The entire thing
+
+Or I replace the entire controller with my own design, preferably with the exact same dimensions, and the LCD and buttons in the exact same spots.
+
+This option is definitely feasible, but possibly more work and more expensive than the other. It's also sligtly more risky in terms of reliability and safety.
+But it should be fine, since there are a bunch of safely features outside of the PCB: a thermal cutout (96°C+0/-6) on the power inlet, a check valve and pressure relief valve on the water inlet.
 But I don't want the water to get anywhere near 96°C. The original firmware has a maximum temperature setting of 75°C, which I'll want to replicate. To make this reliable, I'll have to use the watchdog features of the microcontroller.
+
+### Give up
+
+No. Just no.
+
+Either way I'll end up with a water heater with some kind of connectivity, probably MQTT over wifi. The most likely microcontroller would be an esp32.
 
 I'll try to gather some docs and pictures in `./docs/` this repo, work on the board in `./pcb/`, and probably also work on some firmware at some point in the future.
 

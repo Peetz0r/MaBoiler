@@ -17,7 +17,8 @@ It has a PCB with a microcontroller, a conector for a 10K NTC temperature sensor
   * fun fact: the mains voltage in my house is usually between 235 V and 240 V, so the actual power is usually between 2.1 and 2.2 kW.
 * STWD100 watchdog IC
 * PE301522 230V AC -> 7.5V AC isolated transformer, DB106S bridge rectifier, NCP3170 switching converter, 3.3V
-* 0.33F 5.5V supercap (charged up to 3.3V) probably for the RTC, but I have no clue how this is connected to the microcontroller
+* 0.33F 5.5V supercap (charged up to 3.3V) for the RTC, connected to the main VDD rail
+  * I assume the microcontroller somehow detects absence of mains power, and then puts everything in a low power mode but keeps the clock running
 
 ## Pinouts:
 ### Wifi module header
